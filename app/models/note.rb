@@ -1,2 +1,3 @@
-class Note < ApplicationRecord
+class Note < ApplicationRecord 
+  belongs_to :user
 end
