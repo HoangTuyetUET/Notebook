@@ -1,0 +1,39 @@
+ <html>
+   <head>
+     <title>Notenote</title>
+     <%= csrf_meta_tags %>
+
+     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+     <link rel="manifest" href="/manifest.json" />
+     <meta name="apple-mobile-web-app-capable" content="yes">
+     <meta charset="UTF-8">
+     <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#2E2F30"/>
+  </head>
+
+ <body>
+  <header>
+    <div class="header_inner">
+      <%= link_to image_tag('logo.svg'), root_path, id: "logo" %>
+      <nav>
+        <% if user_signed_in? %>
+          <%= link_to "New Note", new_note_path %>
+          <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= link_to "Log In", new_user_session_path %>
+        <% end %>
+      </nav>
+    </div>
+  </header>
+  <p class="notice">
+    <%= notice %>
+  </p>
+  <p class="alert">
+    <%= alert %>
+  </p>
+  <%= yield  %>
+</body>
+</html>
